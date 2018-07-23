@@ -1,0 +1,20 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /zdrojowa_zadanie/
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^assets/css/(.*) /zdrojowa_zadanie/wp-content/themes/theme/assets/css/$1 [QSA,L]
+RewriteRule ^assets/js/(.*) /zdrojowa_zadanie/wp-content/themes/theme/assets/js/$1 [QSA,L]
+RewriteRule ^assets/jsdist/(.*) /zdrojowa_zadanie/wp-content/themes/theme/assets/jsdist/$1 [QSA,L]
+RewriteRule ^assets/img/(.*) /zdrojowa_zadanie/wp-content/themes/theme/assets/img/$1 [QSA,L]
+RewriteRule ^assets/fonts/(.*) /zdrojowa_zadanie/wp-content/themes/theme/assets/fonts/$1 [QSA,L]
+RewriteRule ^uploads/(.*) /zdrojowa_zadanie/wp-content/uploads/$1 [QSA,L]
+RewriteRule ^plugins/(.*) /zdrojowa_zadanie/wp-content/plugins/$1 [QSA,L]
+RewriteRule ^ajax$ /zdrojowa_zadanie/wp-admin/admin-ajax.php [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /zdrojowa_zadanie/index.php [L]
+</IfModule>
+
+# END WordPress
