@@ -1,0 +1,48 @@
+.contact-form{
+    .form_spacer{
+        color:red;
+    }
+    .form-group{
+        color:#4e4e4e;
+        .form-control{
+            color:#4e4e4e;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color:#4e4e4e;
+                opacity: 1; /* Firefox */
+            }
+            &.message{
+                min-height: 177px;
+               width: 100%;
+            }
+        }
+        
+    }
+    .send_div{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .send{
+        float:right;
+        background-color: #ed3163;
+        width:120px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 25px;
+        height: 35px;
+        border:0px;
+
+
+    }
+    .notification{
+        color:black !important;
+    }
+    .alert-error{
+        background-color:#f6baba;
+        border-color: #f31515;
+        color: #f31515;
+    }
+}

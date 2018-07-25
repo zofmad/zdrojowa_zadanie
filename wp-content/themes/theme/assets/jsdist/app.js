@@ -70,25 +70,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
-
-jQuery(document).ready(function ($) {
-
-  console.log('works');
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10457,11 +10438,83 @@ return jQuery;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, jQuery) {
+
+function sendFormAfterValidation(form) {
+    if ($(form).valid()) {
+        $('.form_spacer').text('');
+        $.ajax({
+            type: $(form).attr('method'),
+            url: ajax_url + '?action=contact',
+            data: $(form).serialize(),
+            dataType: "JSON",
+            success: function success(data) {
+
+                $('.form_spacer').text(data.message);
+                if (data.message = "Message sent.") {
+                    $(form)[0].reset();
+                }
+            },
+            error: function error(_error) {
+                console.log(_error);
+            }
+        });
+    } else {
+        $('.form_spacer').text('Wypełnij zaznaczone pola poprawnie.');
+    }
+}
+;
+jQuery(document).ready(function ($) {
+    $('.contact-form').on('submit', function () {
+        console.log('aaaa');
+        $(this).validate({
+            errorPlacement: function errorPlacement(error, element) {
+                return true;
+            },
+            errorClass: "invalid",
+            rules: {
+                name: {
+                    pattern: /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/
+                },
+                surname: {
+                    pattern: /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/
+                },
+
+                email: {
+                    required: true,
+                    //                            xxxx@yyyy.zzz
+                    pattern: /.+\@.+\..+/
+                },
+                message: {
+                    required: true
+                }
+            }
+        });
+
+        console.log('aa');
+        sendFormAfterValidation($(this));
+    });
+
+    console.log('works');
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(0)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(0);
-module.exports = __webpack_require__(1);
+__webpack_require__(1);
+module.exports = __webpack_require__(2);
 
 
 /***/ })
